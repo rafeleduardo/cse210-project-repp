@@ -1,8 +1,32 @@
 using Journal;
 
+/*
+ * =====================================================================================
+ *   Journal Program - Design and Implementation Notes
+ * =====================================================================================
+ * 
+ * This program helps users record daily events through a series of reflective prompts.
+ * The following notes describe new feature to make it more flexible.
+ * 
+ * 
+ * === 1. Data Storage Enhancements ===
+ * 
+ *    a. Modernized Data Storage with JSON:
+ *       - Rationale: To overcome the limitations of a simple text-based format (like
+ *         using '|' as a separator), the application has been designed to use JSON
+ *         (JavaScript Object Notation) for saving and loading the journal.
+ *       - Benefits Achieved:
+ *         - JSON natively handles special characters (commas, quotes, newlines) within user entries,
+ *           preventing file corruption.
+ *         - The structure easily accommodates new data fields in the `JournalEntry` class without requiring
+ *           changes to the core saving and loading logic.
+ * 
+ */
+
 class Program
 {
     static void Main(string[] args)
+    
     {
         PersonalJournal myJournal = new PersonalJournal();
         PromptGenerator promptGenerator = new PromptGenerator();
@@ -30,9 +54,7 @@ class Program
                     Console.WriteLine(randomPrompt);
                     Console.Write("> ");
                     string answer = Console.ReadLine();
-                    JournalEntry newEntry = new JournalEntry();
-                    newEntry._prompt = randomPrompt;
-                    newEntry._answer = answer;
+                    JournalEntry newEntry = new JournalEntry(randomPrompt, answer);
                     
                     myJournal.AddJournalEntry(newEntry);
                     Console.WriteLine("Entry added!");
