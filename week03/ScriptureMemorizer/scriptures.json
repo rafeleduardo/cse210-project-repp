@@ -1,0 +1,37 @@
+﻿[
+  {
+    "book": "John",
+    "chapter": 3,
+    "verseStart": 16,
+    "verseEnd": 17,
+    "text": "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. For God sent not his Son into the world to condemn the world; but that the world through him might be saved."
+  },
+  {
+    "book": "1 Nephi",
+    "chapter": 3,
+    "verseStart": 7,
+    "verseEnd": 7,
+    "text": "And it came to pass that I, Nephi, said unto my father: I will go and do the things which the Lord hath commanded, for I know that the Lord giveth no commandments unto the children of men, save he shall prepare a way for them that they may accomplish the thing which he commandeth them."
+  },
+  {
+    "book": "Moses",
+    "chapter": 1,
+    "verseStart": 39,
+    "verseEnd": 39,
+    "text": "For behold, this is my work and my glory—to bring to pass the immortality and eternal life of man."
+  },
+  {
+    "book": "Doctrine and Covenants",
+    "chapter": 88,
+    "verseStart": 118,
+    "verseEnd": 119,
+    "text": "And as all have not faith, seek ye diligently and teach one another words of wisdom; yea, seek ye out of the best books words of wisdom; seek learning, even by study and also by faith. Organize yourselves; prepare every needful thing; and establish a house, even a house of prayer, a house of fasting, a house of faith, a house of learning, a house of glory, a house of order, a house of God."
+  },
+  {
+    "book": "Proverbs",
+    "chapter": 3,
+    "verseStart": 5,
+    "verseEnd": 6,
+    "text": "Trust in the Lord with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths."
+  }
+]
