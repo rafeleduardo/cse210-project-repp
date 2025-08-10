@@ -80,7 +80,9 @@
 
     private void DisplayPlayerInfo()
     {
-        Console.WriteLine($"\nYou have {_score} points.\n");
+        int level = 1 + (_score / 1000);
+        Console.WriteLine($"You are Level {level}");
+        Console.WriteLine($"You have {_score} points.");
     }
 
     private void ListGoalNames()
@@ -108,10 +110,20 @@
 
     private void RecordEvent(int goalIndex)
     {
+        int oldLevel = 1 + (_score / 1000);
         int pointsEarned = _goals[goalIndex].RecordEvent();
         _score += pointsEarned;
+        int newLevel = 1 + (_score / 1000);
+
         Console.WriteLine($"Congratulations! You have earned {pointsEarned} points!");
         Console.WriteLine($"You now have {_score} points!");
+
+        if (newLevel > oldLevel)
+        {
+            Console.WriteLine("*****************************************");
+            Console.WriteLine($"Congratulations! You've reached Level {newLevel}!");
+            Console.WriteLine("*****************************************\n");
+        }
     }
 
     private void SaveGoals(string filename)
@@ -126,36 +138,55 @@
 
     private void LoadGoals(string filename)
     {
-        string[] lines = File.ReadAllLines(filename);
-        _score = int.Parse(lines[0]);
-        for (int i = 1; i < lines.Length; i++)
+        try
         {
-            string[] parts = lines[i].Split(':');
-            string goalType = parts[0];
-            string[] goalData = parts[1].Split(',');
+            string[] lines = File.ReadAllLines(filename);
+            _score = int.Parse(lines[0]);
+            _goals.Clear();
+            for (int i = 1; i < lines.Length; i++)
+            {
+                string[] parts = lines[i].Split(':');
+                string goalType = parts[0];
+                string[] goalData = parts[1].Split(',');
 
-            if (goalType == "SimpleGoal")
-            {
-                SimpleGoal goal = new SimpleGoal(goalData[0], goalData[1], int.Parse(goalData[2]));
-                if (bool.Parse(goalData[3]))
+                if (goalType == "SimpleGoal")
                 {
-                    goal.RecordEvent(); // Mark as complete
+                    SimpleGoal goal = new SimpleGoal(goalData[0], goalData[1], int.Parse(goalData[2]));
+                    if (bool.Parse(goalData[3]))
+                    {
+                        goal.RecordEvent();
+                    }
+                    _goals.Add(goal);
                 }
-                _goals.Add(goal);
-            }
-            else if (goalType == "EternalGoal")
-            {
-                _goals.Add(new EternalGoal(goalData[0], goalData[1], int.Parse(goalData[2])));
-            }
-            else if (goalType == "ChecklistGoal")
-            {
-                ChecklistGoal goal = new ChecklistGoal(goalData[0], goalData[1], int.Parse(goalData[2]), int.Parse(goalData[4]), int.Parse(goalData[3]));
-                for(int j = 0; j < int.Parse(goalData[5]); j++)
+                else if (goalType == "EternalGoal")
                 {
-                    goal.RecordEvent();
+                    _goals.Add(new EternalGoal(goalData[0], goalData[1], int.Parse(goalData[2])));
                 }
-                _goals.Add(goal);
+                else if (goalType == "ChecklistGoal")
+                {
+                    ChecklistGoal goal = new ChecklistGoal(goalData[0], goalData[1], int.Parse(goalData[2]), int.Parse(goalData[4]), int.Parse(goalData[3]));
+                    int amountCompleted = int.Parse(goalData[5]);
+                    for (int j = 0; j < amountCompleted; j++)
+                    {
+                        goal.RecordEvent();
+                    }
+                    
+                    _score -= (amountCompleted * int.Parse(goalData[2]));
+                    _goals.Add(goal);
+                }
             }
+            Console.WriteLine("Goals loaded successfully!");
+        }
+        catch (FileNotFoundException)
+        {
+            Console.WriteLine($"Error: The file '{filename}' was not found.\n");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred while loading the file: {ex.Message}");
+            Console.WriteLine("The file may be corrupt or in an incorrect format.");
+            _goals.Clear();
+            _score = 0;
         }
     }
 }
