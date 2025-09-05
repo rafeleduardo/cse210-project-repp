@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSE 210 Programming Projects - Rafael Eduardo</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 600;
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .intro {
+            background-color: #f6f8fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #0366d6;
+        }
+        
+        .weeks-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .week-card {
+            background: white;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .week-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .week-card h3 {
+            margin-top: 0;
+            color: #0366d6;
+            font-size: 1.3em;
+            border-bottom: 2px solid #e1e4e8;
+            padding-bottom: 10px;
+        }
+        
+        .exercise-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0 0;
+        }
+        
+        .exercise-list li {
+            background-color: #f8f9fa;
+            margin: 8px 0;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border-left: 3px solid #28a745;
+        }
+        
+        .exercise-list a {
+            color: #24292e;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .exercise-list a:hover {
+            color: #0366d6;
+            text-decoration: underline;
+        }
+        
+        .special-projects {
+            background-color: #fff5b4;
+            border: 1px solid #d1d5da;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .special-projects h3 {
+            margin-top: 0;
+            color: #b08800;
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .project-item {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        .project-item h4 {
+            margin: 0 0 8px 0;
+            color: #0366d6;
+        }
+        
+        .project-item p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #586069;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f6f8fa;
+            border-radius: 8px;
+            color: #586069;
+        }
+        
+        .github-link {
+            display: inline-block;
+            background-color: #24292e;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: background-color 0.2s ease;
+        }
+        
+        .github-link:hover {
+            background-color: #0366d6;
+        }
+        
+        .tech-stack {
+            background-color: #e6ffed;
+            border: 1px solid #34d058;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .tech-stack h4 {
+            margin: 0 0 10px 0;
+            color: #28a745;
+        }
+        
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .badge {
+            background-color: #28a745;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>CSE 210 Programming Projects</h1>
+        <p>Programming with Classes - Student Portfolio</p>
+    </div>
+
+    <div class="intro">
+        <h2>About This Repository</h2>
+        <p>This repository contains all programming projects and exercises completed during the CSE 210 course (Programming with Classes). 
+           The course focuses on object-oriented programming principles using C# and includes weekly exercises that build upon 
+           fundamental programming concepts.</p>
+    </div>
+
+    <div class="tech-stack">
+        <h4>🛠️ Technologies & Tools</h4>
+        <div class="tech-badges">
+            <span class="badge">C#</span>
+            <span class="badge">.NET</span>
+            <span class="badge">Visual Studio</span>
+            <span class="badge">Object-Oriented Programming</span>
+            <span class="badge">Console Applications</span>
+        </div>
+    </div>
+
+    <h2>📚 Weekly Projects & Exercises</h2>
+    
+    <div class="weeks-container">
+        <div class="week-card">
+            <h3>Week 01 - Fundamentals</h3>
+            <p>Introduction to C# programming and basic console applications.</p>
+            <ul class="exercise-list">
+                <li><a href="week01/Exercise1">Exercise 1 - Hello World & Variables</a></li>
+                <li><a href="week01/Exercise2">Exercise 2 - Input/Output</a></li>
+                <li><a href="week01/Exercise3">Exercise 3 - Conditionals</a></li>
+                <li><a href="week01/Exercise4">Exercise 4 - Loops</a></li>
+                <li><a href="week01/Exercise5">Exercise 5 - Functions</a></li>
+            </ul>
+        </div>
+
+        <div class="week-card">
+            <h3>Week 02 - Data Structures</h3>
+            <p>Working with lists, arrays, and file I/O operations.</p>
+            <ul class="exercise-list">
+                <li><a href="week02/Journal">📔 Journal Application</a></li>
+                <li><a href="week02/Resumes">📄 Resume Builder</a></li>
+            </ul>
+        </div>
+
+        <div class="week-card">
+            <h3>Week 03 - Object Design</h3>
+            <p>Introduction to classes, objects, and encapsulation.</p>
+            <ul class="exercise-list">
+                <li><a href="week03">Week 03 Projects</a></li>
+            </ul>
+        </div>
+
+        <div class="week-card">
+            <h3>Week 04 - Inheritance</h3>
+            <p>Understanding inheritance and polymorphism concepts.</p>
+            <ul class="exercise-list">
+                <li><a href="week04">Week 04 Projects</a></li>
+            </ul>
+        </div>
+
+        <div class="week-card">
+            <h3>Week 05 - Advanced OOP</h3>
+            <p>Advanced object-oriented programming techniques.</p>
+            <ul class="exercise-list">
+                <li><a href="week05">Week 05 Projects</a></li>
+            </ul>
+        </div>
+
+        <div class="week-card">
+            <h3>Week 06 - Design Patterns</h3>
+            <p>Implementing common design patterns and principles.</p>
+            <ul class="exercise-list">
+                <li><a href="week06/Shapes">🔺 Shapes Application</a></li>
+                <li><a href="week06/EternalQuest">⚔️ Eternal Quest Game</a></li>
+            </ul>
+        </div>
+
+        <div class="week-card">
+            <h3>Week 07 - Final Projects</h3>
+            <p>Capstone projects demonstrating learned concepts.</p>
+            <ul class="exercise-list">
+                <li><a href="week07/ExerciseTracking">🏃‍♂️ Exercise Tracking System</a></li>
+            </ul>
+        </div>
+
+        <div class="week-card">
+            <h3>Sandbox</h3>
+            <p>Experimental code and practice exercises.</p>
+            <ul class="exercise-list">
+                <li><a href="sandbox">🧪 Sandbox Projects</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="special-projects">
+        <h3>🌟 Featured Projects</h3>
+        <div class="project-grid">
+            <div class="project-item">
+                <h4>Journal Application</h4>
+                <p>A personal journaling system with JSON storage and reflective prompts for daily entries.</p>
+            </div>
+            <div class="project-item">
+                <h4>Eternal Quest Game</h4>
+                <p>A text-based adventure game implementing object-oriented design patterns and game mechanics.</p>
+            </div>
+            <div class="project-item">
+                <h4>Exercise Tracking System</h4>
+                <p>A comprehensive fitness tracking application with exercise logging and progress monitoring.</p>
+            </div>
+            <div class="project-item">
+                <h4>Shapes Application</h4>
+                <p>Geometric shapes calculator demonstrating inheritance and polymorphism principles.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>🎓 <strong>Course:</strong> CSE 210 - Programming with Classes</p>
+        <p>📚 This repository showcases the progression through object-oriented programming concepts using C#</p>
+        <a href="https://github.com/rafeleduardo/cse210-project-repp" class="github-link">
+            📂 View Source Code on GitHub
+        </a>
+    </div>
+</body>
+</html>
